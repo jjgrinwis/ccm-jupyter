@@ -13,14 +13,53 @@ The notebook walks through:
 
 - An Akamai account with CCM enabled on at least one contract
 - An API client with [CCM permissions](https://techdocs.akamai.com/ccm/reference/get-started) and credentials in `~/.edgerc`
-- [uv](https://docs.astral.sh/uv/) for dependency management
 
-## Setup
+## 1. Install Git
+
+Git is needed to download (clone) this repository.
+
+- **macOS**: Git is included with Xcode Command Line Tools. Run `git --version` in a terminal — if it's not installed, macOS will prompt you to install it.
+- **Windows**: Download from [git-scm.com](https://git-scm.com/download/win) and run the installer.
+- **Linux**: `sudo apt install git` (Debian/Ubuntu) or `sudo dnf install git` (Fedora/RHEL).
+
+## 2. Clone this repository
+
+Open a terminal and run:
 
 ```bash
-uv sync
+git clone https://github.com/jjgrinwis/ccm-jupyter.git
+cd ccm-jupyter
+```
+
+This downloads the notebook and all supporting files to your machine.
+
+## 3. Install uv
+
+`uv` is a fast Python package manager used to install dependencies and run the notebook.
+
+**macOS / Linux:**
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+**Windows (PowerShell):**
+
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+After installation, restart your terminal so the `uv` command is available.
+
+## 4. Run the notebook
+
+Install dependencies and launch Jupyter Lab in one step:
+
+```bash
 uv run jupyter lab create-ccm-cert.ipynb
 ```
+
+`uv` will automatically create a virtual environment and install all required packages on the first run.
 
 ## Configuration
 
