@@ -1,0 +1,43 @@
+# Akamai CCM Demo Notebook
+
+A Jupyter notebook that demonstrates how to create a third-party certificate in [Akamai Cloud Certificate Manager](https://techdocs.akamai.com/ccm/docs/welcome) (CCM) via the API.
+
+The notebook walks through:
+
+1. Creating a Certificate Signing Request (CSR) via `POST /ccm/v1/certificates`
+2. Signing it locally with a self-signed CA (stands in for a real CA in a demo)
+3. Uploading the signed certificate back via `PUT /ccm/v1/certificates/{id}`
+4. Deleting the certificate to clean up
+
+## Prerequisites
+
+- An Akamai account with CCM enabled on at least one contract
+- An API client with [CCM permissions](https://techdocs.akamai.com/ccm/reference/get-started) and credentials in `~/.edgerc`
+- [uv](https://docs.astral.sh/uv/) for dependency management
+
+## Setup
+
+```bash
+uv sync
+uv run jupyter lab create-ccm-cert.ipynb
+```
+
+## Configuration
+
+All configuration is done via environment variables before running the notebook:
+
+| Variable | Required | Description |
+|---|---|---|
+| `AKAMAI_EDGEGRID_SECTION` | No | Section in `~/.edgerc` to use (default: `default`) |
+| `AKAMAI_ACCOUNT_SWITCH_KEY` | No | Switch to a specific account (format: `1-XXXXX:1-XXXXX`) |
+| `AKAMAI_CONTRACT_ID` | Yes | Contract ID to create the certificate under |
+| `AKAMAI_GROUP_ID` | Yes | Group ID to create the certificate under |
+| `AKAMAI_DEMO_BASE_DOMAIN` | No | Base domain for the demo hostname (default: `great-demo.com`) |
+
+Example:
+
+```bash
+export AKAMAI_EDGEGRID_SECTION="default"
+export AKAMAI_CONTRACT_ID="1-ABC123"
+export AKAMAI_GROUP_ID="12345"
+```
