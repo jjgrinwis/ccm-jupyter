@@ -7,7 +7,8 @@ The notebook walks through:
 1. Creating a Certificate Signing Request (CSR) via `POST /ccm/v1/certificates`
 2. Signing it locally with a self-signed CA (stands in for a real CA in a demo)
 3. Uploading the signed certificate back via `PUT /ccm/v1/certificates/{id}`
-4. Deleting the certificate to clean up
+4. Cloning the certificate — fetching its configuration via `GET /ccm/v1/certificates/{id}`, creating a new CSR with the same settings (SANs, key type, key size, network, and subject), and signing and uploading the clone
+5. Deleting both certificates to clean up
 
 ## Prerequisites
 
@@ -27,7 +28,7 @@ Git is needed to download (clone) this repository.
 Open a terminal and run:
 
 ```bash
-git clone
+git clone https://github.com/jjgrinwis/ccm-jupyter.git
 cd ccm-jupyter
 ```
 
@@ -65,13 +66,13 @@ uv run jupyter lab create-ccm-cert.ipynb
 
 All configuration is done via environment variables before running the notebook:
 
-| Variable                    | Required | Description                                                   |
-| --------------------------- | -------- | ------------------------------------------------------------- |
-| `AKAMAI_EDGEGRID_SECTION`   | No       | Section in `~/.edgerc` to use (default: `default`)            |
-| `AKAMAI_ACCOUNT_SWITCH_KEY` | No       | Switch to a specific account (format: `1-XXXXX:1-XXXXX`)      |
-| `AKAMAI_CONTRACT_ID`        | Yes      | Contract ID to create the certificate under                   |
-| `AKAMAI_GROUP_ID`           | Yes      | Group ID to create the certificate under                      |
-| `AKAMAI_DEMO_BASE_DOMAIN`   | No       | Base domain for the demo hostname (default: `great-demo.com`) |
+| Variable | Required | Description |
+|---|---|---|
+| `AKAMAI_EDGEGRID_SECTION` | No | Section in `~/.edgerc` to use (default: `default`) |
+| `AKAMAI_ACCOUNT_SWITCH_KEY` | No | Switch to a specific account (format: `1-XXXXX:1-XXXXX`) |
+| `AKAMAI_CONTRACT_ID` | Yes | Contract ID to create the certificate under |
+| `AKAMAI_GROUP_ID` | Yes | Group ID to create the certificate under |
+| `AKAMAI_DEMO_BASE_DOMAIN` | No | Base domain for the demo hostname (default: `great-demo.com`) |
 
 Example:
 
