@@ -6,9 +6,12 @@ The notebook walks through:
 
 1. Creating a Certificate Signing Request (CSR) via `POST /ccm/v1/certificates`
 2. Signing it locally with a self-signed CA (stands in for a real CA in a demo)
-3. Uploading the signed certificate back via `PUT /ccm/v1/certificates/{id}`
-4. Cloning the certificate — fetching its configuration via `GET /ccm/v1/certificates/{id}`, creating a new CSR with the same settings (SANs, key type, key size, network, and subject), and signing and uploading the clone
-5. Deleting both certificates to clean up
+3. Validating domain ownership via `POST /domain-validation/v1/domains/search` before uploading
+4. Uploading the signed certificate back via `PUT /ccm/v1/certificates/{id}`
+5. *(Optional)* Renewing the certificate by cloning it — fetching its configuration via `GET /ccm/v1/certificates/{id}`, creating a new CSR with the same settings, and signing and uploading the clone
+6. Deleting both certificates to clean up
+
+The renewal/clone section can be skipped by setting `demo_clone = False` in the notebook before running.
 
 ## Prerequisites
 
