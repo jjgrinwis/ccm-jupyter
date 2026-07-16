@@ -32,7 +32,7 @@ Git is needed to download (clone) this repository.
 Open a terminal and run:
 
 ```bash
-git clone https://github.com/jjgrinwis/ccm-jupyter.git
+git clone ssh://git@git.source.akamai.com:7999/se_code_collective/ccm-jupyter.git
 cd ccm-jupyter
 ```
 
