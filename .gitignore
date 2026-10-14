@@ -16,3 +16,6 @@ wheels/
 *.key
 *.pem
 .edgerc
+
+# some osx related stuf
+ .DS_Store
