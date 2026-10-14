@@ -2,6 +2,8 @@
 
 A Jupyter notebook that demonstrates how to create a third-party certificate in [Akamai Cloud Certificate Manager](https://techdocs.akamai.com/ccm/docs/welcome) (CCM) via the API.
 
+The repository also includes a V2 certificate lineage demo in `create-ccm-cert-lineage.ipynb`. It creates a lineage, signs and uploads the certificate, activates it, and renews it by creating and promoting a new generation.
+
 The notebook walks through:
 
 1. Creating a Certificate Signing Request (CSR) via `POST /ccm/v1/certificates`
@@ -65,6 +67,12 @@ uv run jupyter lab create-ccm-cert.ipynb
 ```
 
 `uv` will automatically create a virtual environment and install all required packages on the first run.
+
+To run the certificate lineage demo instead, use:
+
+```bash
+uv run jupyter lab create-ccm-cert-lineage.ipynb
+```
 
 ## Configuration
 
