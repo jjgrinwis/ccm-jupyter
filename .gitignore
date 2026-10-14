@@ -18,4 +18,4 @@ wheels/
 .edgerc
 
 # some osx related stuf
- .DS_Store
+ .DS_Store/*
