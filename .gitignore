@@ -19,3 +19,6 @@ wheels/
 
 # some osx related stuf
 .DS_Store
+
+# ignore akamai cli logs
+*.log
